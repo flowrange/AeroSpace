@@ -32,7 +32,9 @@ struct ListWindowsCommand: Command {
                 if monitors.isEmpty { return false }
                 workspaces = workspaces.filter { monitors.contains($0.workspaceMonitor.rect.topLeftCorner) }
             }
-            windows = workspaces.flatMap(\.allLeafWindowsRecursive)
+            let stickyWindows = Workspace.all.flatMap(\.allLeafWindowsRecursive)
+                .filter { $0.isSticky && $0.isFloating && $0.visualWorkspace.map(workspaces.contains) == true }
+            windows = Array((workspaces.flatMap(\.allLeafWindowsRecursive) + stickyWindows).toOrderedSet())
             if let pid = args.filteringOptions.pidFilter {
                 windows = windows.filter { $0.app.pid == pid }
             }

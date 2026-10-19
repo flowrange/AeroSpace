@@ -10,7 +10,7 @@ include::util/man-attributes.adoc[]
 [verse]
 // tag::synopsis[]
 aerospace layout [-h|--help] [--window-id <window-id>]
-                 (h_tiles|v_tiles|h_accordion|v_accordion|tiles|accordion|horizontal|vertical|tiling|floating)...
+                 (h_tiles|v_tiles|h_accordion|v_accordion|tiles|accordion|horizontal|vertical|tiling|floating|sticky)...
 
 // end::synopsis[]
 
@@ -26,6 +26,12 @@ If several arguments are supplied then finds the first argument that doesn't des
 * Change tiling layout but preserve orientation: `tiles|accordion`
 * Change orientation but preserve layout: `horizontal|vertical`
 * Toggle floating/tiling mode: `tiling|floating`
+* Keep a floating window visible on all workspaces of its current monitor: `sticky`
+* Toggle sticky/ordinary floating mode: `sticky floating`
+
+Sticky windows keep their owning workspace and monitor. Focusing one does not
+switch back to its owning workspace. `floating` or `tiling` clears sticky mode.
+macOS-native minimized, hidden, and fullscreen states still take precedence.
 
 // =========================================================== Options
 include::./util/conditional-options-header.adoc[]
@@ -49,6 +55,9 @@ include::util/conditional-examples-header.adoc[]
 
 * Switch to `tiles` layout. Toggle the layout orientation if already in `tiles` layout: +
 `aerospace layout tiles horizontal vertical`
+
+* Toggle sticky mode while keeping the window on its monitor: +
+`aerospace layout sticky floating`
 
 // end::body[]
 
