@@ -33,6 +33,9 @@ Sticky windows keep their owning workspace and monitor. Focusing one does not
 switch back to its owning workspace. `floating` or `tiling` clears sticky mode.
 macOS-native minimized, hidden, and fullscreen states still take precedence.
 
+For a persistent visual indicator, see the
+link:config-examples/sticky-borders.md[JankyBorders integration example].
+
 // =========================================================== Options
 include::./util/conditional-options-header.adoc[]
 
