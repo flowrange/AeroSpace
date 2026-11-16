@@ -14,10 +14,10 @@ features and configuration.
 - **Sticky floating windows.** Keep a window visible across workspaces on its
   current monitor. Focusing it does not return to its original workspace. A tiled
   window becomes floating when made sticky; its owning workspace is preserved.
-- **Optional sticky indicator with [JankyBorders](https://github.com/FelixKratz/JankyBorders).**
-  Sticky windows have bright orange borders when focused and darker orange
-  borders when unfocused. The helper restores normal colors when sticky mode is
-  cleared. See the [setup instructions](docs/config-examples/sticky-borders.md).
+- **Optional window state indicator with [JankyBorders](https://github.com/FelixKratz/JankyBorders).**
+  Tiled windows have green borders, floating windows blue with a soft halo, and
+  sticky windows orange, with darker shades when unfocused. Maximized floating
+  windows keep their blue halo. See the [setup instructions](docs/config-examples/sticky-borders.md).
 
 ## Usage
 

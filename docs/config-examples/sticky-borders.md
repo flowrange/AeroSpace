@@ -1,4 +1,4 @@
-# Sticky window borders
+# Window state borders
 
 JankyBorders supports per-window colors through `apply-to=<window-id>` (confirmed
 in version 1.8.4). See the [maintainer's explanation](https://github.com/FelixKratz/JankyBorders/issues/57).
@@ -21,15 +21,24 @@ alt-cmd-ctrl-shift-space = [
 ```
 
 Keep the existing command that starts Borders. Reload AeroSpace's configuration
-and run the script once to mark windows that are already sticky. Sticky windows
-use bright orange when focused and darker orange when unfocused. Other windows
-keep green/gray borders. Edit the four colors at the top of the script to change
-the palette.
+and run the script once to color existing windows:
 
-The script updates every sticky window without changing focus, workspaces, or
+- Tiled windows (including accordion layouts): green.
+- Floating windows, including maximized floating windows: blue with a soft halo.
+- Sticky windows: orange, taking precedence over floating mode.
+
+Each state uses a brighter color when focused and a darker shade of the same
+color when unfocused. Edit the `tiling_*`, `floating_*` and `sticky_*` colors at
+the top of the script to change the palette. The `normal_*` colors restore the
+original green/gray defaults when resetting or clearing a marker.
+Floating colors use `glow(0xAARRGGBB)` with reduced opacity, and a subtler shade
+when unfocused. JankyBorders fixes the glow blur radius; it has no separate
+intensity setting.
+
+The script updates window borders without changing focus, workspaces, or
 monitors. It runs only when invoked, with no background polling. If another
-binding or external script changes sticky state, invoke it after the layout
-command too; otherwise its next focus event will update the indicator. After
+binding or external script changes floating, tiling or sticky state, invoke it
+after the layout command too; otherwise its next focus event will update the indicator. After
 restarting Borders or changing its global colors, invoke it to restore markers.
 
 To remove the integration, first run `sticky-borders.sh reset`, then remove the
